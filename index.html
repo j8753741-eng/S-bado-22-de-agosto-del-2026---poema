@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>✦ Donde Mi Corazón Pronuncia Tu Nombre ✦</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#05030a;
+    --bg2:#100718;
+    --text:#f7edf8;
+    --soft:#d8bddb;
+    --violet:#b98bd0;
+    --pink:#efb5d9;
+    --gold:#e9c98b;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:
+        radial-gradient(circle at 50% 10%, #24102e 0%, transparent 32%),
+        radial-gradient(circle at 10% 70%, #160a20 0%, transparent 28%),
+        linear-gradient(180deg,var(--bg),var(--bg2),#030207);
+    color:var(--text);
+    font-family:"Cormorant Garamond",serif;
+    overflow-x:hidden;
+}
+
+/* ───────────── CIELO ───────────── */
+
+.sky{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    opacity:.55;
+    animation:twinkle 4s infinite ease-in-out;
+}
+
+@keyframes twinkle{
+    0%,100%{opacity:.18;transform:scale(.7)}
+    50%{opacity:.9;transform:scale(1.5)}
+}
+
+/* ───────────── INTRO ───────────── */
+
+.hero{
+    min-height:100vh;
+    position:relative;
+    z-index:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:50px 25px;
+}
+
+.moon{
+    width:125px;
+    height:125px;
+    border-radius:50%;
+    background:
+        radial-gradient(circle at 35% 30%,#fffdfc 0%,#f4e7f4 42%,#cbaecf 100%);
+    box-shadow:
+        0 0 25px rgba(239,181,217,.45),
+        0 0 80px rgba(185,139,208,.2);
+    margin-bottom:45px;
+    position:relative;
+    animation:moonFloat 6s ease-in-out infinite;
+}
+
+.moon::after{
+    content:"";
+    position:absolute;
+    width:125px;
+    height:125px;
+    border-radius:50%;
+    background:var(--bg);
+    left:38px;
+    top:-10px;
+}
+
+@keyframes moonFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-12px)}
+}
+
+.date{
+    font-family:"Cinzel",serif;
+    letter-spacing:4px;
+    font-size:.72rem;
+    color:var(--gold);
+    margin-bottom:28px;
+    text-transform:uppercase;
+}
+
+h1{
+    max-width:900px;
+    font-family:"Cinzel",serif;
+    font-size:clamp(2rem,6vw,4.7rem);
+    line-height:1.25;
+    letter-spacing:2px;
+    font-weight:600;
+    text-shadow:
+        0 0 25px rgba(239,181,217,.18),
+        0 0 70px rgba(185,139,208,.1);
+}
+
+.subtitle{
+    margin-top:32px;
+    color:var(--soft);
+    font-size:1.35rem;
+    font-style:italic;
+}
+
+.scroll{
+    position:absolute;
+    bottom:35px;
+    font-family:"Cinzel",serif;
+    font-size:.65rem;
+    letter-spacing:4px;
+    color:#9e819f;
+    animation:scrollPulse 2s infinite;
+}
+
+@keyframes scrollPulse{
+    50%{opacity:.35}
+}
+
+/* ───────────── POEMA ───────────── */
+
+.poem{
+    position:relative;
+    z-index:1;
+    max-width:1000px;
+    margin:auto;
+    padding:80px 22px 130px;
+}
+
+.stanza{
+    min-height:55vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    margin-bottom:20px;
+    opacity:0;
+    transform:translateY(45px);
+    transition:1.2s ease;
+}
+
+.stanza.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.stanza p{
+    max-width:720px;
+    margin:0 auto;
+    font-size:clamp(1.3rem,2.7vw,1.75rem);
+    line-height:1.85;
+    text-align:center;
+    color:#f3e7f3;
+}
+
+.stanza strong{
+    display:block;
+    margin:28px auto;
+    font-family:"Cinzel",serif;
+    color:var(--pink);
+    font-size:1.1rem;
+    letter-spacing:2px;
+}
+
+/* ───────────── FRASES DESTACADAS ───────────── */
+
+.heart-line{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:18px;
+    margin:45px 0;
+    color:var(--pink);
+    font-size:1.2rem;
+}
+
+.heart-line::before,
+.heart-line::after{
+    content:"";
+    width:70px;
+    height:1px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(239,181,217,.6)
+    );
+}
+
+.heart-line::after{
+    transform:rotate(180deg);
+}
+
+.mantra{
+    min-height:70vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+}
+
+.mantra-text{
+    max-width:850px;
+    font-family:"Cinzel",serif;
+    font-size:clamp(1.8rem,5vw,3.5rem);
+    line-height:1.5;
+    color:#f7dff1;
+    text-shadow:0 0 35px rgba(239,181,217,.18);
+}
+
+.mantra-text span{
+    color:var(--gold);
+}
+
+/* ───────────── FINAL ───────────── */
+
+.final{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:70px 25px;
+}
+
+.final-heart{
+    font-size:5rem;
+    margin-bottom:40px;
+    filter:drop-shadow(0 0 25px rgba(239,181,217,.55));
+    animation:heartBeat 2.2s infinite;
+}
+
+@keyframes heartBeat{
+    0%,100%{transform:scale(1)}
+    15%{transform:scale(1.13)}
+    30%{transform:scale(1)}
+    45%{transform:scale(1.08)}
+}
+
+.final h2{
+    font-family:"Cinzel",serif;
+    font-size:clamp(1.8rem,5vw,3.3rem);
+    color:#f4d9ec;
+    line-height:1.45;
+    max-width:850px;
+}
+
+.final p{
+    margin-top:35px;
+    max-width:700px;
+    font-size:1.35rem;
+    line-height:1.8;
+    color:var(--soft);
+}
+
+.signature{
+    margin-top:55px;
+    font-family:"Cinzel",serif;
+    letter-spacing:3px;
+    color:var(--gold);
+    font-size:.8rem;
+}
+
+/* ───────────── RESPONSIVE ───────────── */
+
+@media(max-width:600px){
+
+    .hero{
+        padding:35px 20px;
+    }
+
+    .moon{
+        width:95px;
+        height:95px;
+    }
+
+    .moon::after{
+        width:95px;
+        height:95px;
+        left:30px;
+    }
+
+    .date{
+        letter-spacing:2px;
+        font-size:.58rem;
+    }
+
+    .subtitle{
+        font-size:1.15rem;
+    }
+
+    .stanza{
+        min-height:auto;
+        padding:90px 0;
+    }
+
+    .stanza p{
+        font-size:1.28rem;
+        line-height:1.75;
+    }
+
+    .mantra{
+        min-height:65vh;
+    }
+
+    .final{
+        min-height:85vh;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="sky" id="sky"></div>
+
+<section class="hero">
+
+    <div class="moon"></div>
+
+    <div class="date">
+        Sábado · 22 de agosto de 2026 · por la noche
+    </div>
+
+    <h1>
+        ✦ DONDE MI CORAZÓN PRONUNCIA TU NOMBRE
+        Y LA NOCHE SE VUELVE INFINITA ✦
+    </h1>
+
+    <div class="subtitle">
+        Para ti, mi Luz de Azabache
+    </div>
+
+    <div class="scroll">
+        DESCIENDE HACIA EL LUGAR DONDE TE AMO
+    </div>
+
+</section>
+
+
+<main class="poem">
+
+
+<section class="stanza">
+<p>
+Esta noche vuelvo a encontrarte<br>
+en ese lugar secreto de mi pecho<br>
+donde tu nombre no se escribe,<br>
+<strong>se queda.</strong>
+
+Y mientras la noche extiende sus estrellas
+sobre el mundo,
+yo solo puedo pensar en ti,
+en tu mirada,
+en tu sonrisa,
+en esa manera tan tuya de existir
+que consigue que mi corazón
+olvide cómo latía antes de conocerte.
+</p>
+</section>
+
+
+<div class="heart-line">✦</div>
+
+
+<section class="stanza">
+<p>
+Porque amarte no se parece a nada.
+
+<br><br>
+
+No es solamente extrañarte cuando no estás,
+ni son solamente las ganas de abrazarte
+hasta que el tiempo pierda su significado.
+
+<br><br>
+
+Es algo mucho más profundo:
+
+<br><br>
+
+es sentir que mi alma
+aprendió tu nombre
+antes de que mis labios supieran pronunciarlo.
+
+<br><br>
+
+Es querer acercarme a ti
+aunque no haya distancia,
+porque incluso teniéndote cerca
+mi corazón siempre encuentra
+una nueva manera de buscarte.
+</p>
+</section>
+
+
+<section class="stanza">
+<p>
+Y qué extraño milagro eres tú...
+
+<br><br>
+
+Llegaste a mi vida
+y de pronto hubo lugares dentro de mí
+que dejaron de sentirse vacíos.
+
+<br><br>
+
+Desde entonces,
+cuando pienso en el futuro,
+apareces tú.
+
+<br><br>
+
+Cuando imagino un abrazo perfecto,
+apareces tú.
+
+<br><br>
+
+Cuando deseo una noche tranquila,
+apareces tú.
+
+<br><br>
+
+Y cuando cierro los ojos
+para escapar un instante del mundo,
+eres precisamente a ti
+a quien quiero encontrar.
+</p>
+</section>
+
+
+<div class="heart-line">♡</div>
+
+
+<section class="stanza">
+<p>
+Mi Luz de Azabache,
+
+<br><br>
+
+si alguna vez pudiera arrancarle una estrella al cielo,
+no te la regalaría simplemente.
+
+<br><br>
+
+La pondría entre tus manos
+y le pediría que aprendiera de ti
+cómo iluminar de verdad.
+
+<br><br>
+
+Porque ninguna estrella sabe hacerlo
+como tú.
+
+<br><br>
+
+Ninguna tiene tu forma de mirarme,
+tu manera de hacerme sentir querido,
+ni esa magia inexplicable
+que convierte un momento cualquiera
+en un recuerdo que quiero guardar para siempre.
+</p>
+</section>
+
+
+<section class="mantra">
+<div class="mantra-text">
+    Y si pudiera detener esta noche,<br>
+    la detendría exactamente aquí:<br><br>
+    <span>en este instante</span><br>
+    en el que te estoy pensando<br>
+    con todo lo que soy.
+</div>
+</section>
+
+
+<section class="stanza">
+<p>
+Sin miedo.
+
+<br><br>
+
+Sin medida.
+
+<br><br>
+
+Sin guardarme nada.
+
+<br><br>
+
+Porque cuando se trata de ti,
+mi corazón nunca aprendió
+a amar poquito.
+
+<strong>Te ama en grande.</strong>
+
+Te ama con la fuerza
+de todas las palabras que todavía no he conseguido decirte.
+
+Te ama en cada pensamiento inesperado,
+en cada deseo de verte,
+en cada abrazo que imagino,
+en cada beso que todavía llevo guardado
+para cuando pueda volver a encontrarte.
+</p>
+</section>
+
+
+<div class="heart-line">✦ · ✦</div>
+
+
+<section class="stanza">
+<p>
+Te ama incluso en el silencio.
+
+<br><br>
+
+Especialmente en el silencio.
+
+<br><br>
+
+Porque hay noches en las que no necesito decir tu nombre
+para sentir que estás conmigo.
+
+<br><br>
+
+Basta cerrar los ojos
+y recordar la sensación de tenerte cerca.
+
+<br><br>
+
+Entonces mi mundo se hace pequeño:
+
+<br><br>
+
+solo cabes tú,
+mi respiración,
+y este amor inmenso
+que parece no conocer límites.
+</p>
+</section>
+
+
+<section class="stanza">
+<p>
+Quiero que algún día puedas mirar hacia atrás
+y recordar que hubo alguien
+que te amó con una intensidad preciosa,
+que encontró en tu existencia
+una razón para sonreír,
+y que jamás consideró ordinario
+el privilegio de poder llamarte
+<strong>su amor.</strong>
+
+Quiero ser ese corazón
+que todavía te elige
+cuando pasan los días.
+
+El que encuentra nuevas razones
+para admirarte.
+
+El que sigue sintiendo mariposas
+cuando te mira.
+
+El que todavía quiere abrazarte
+cinco minutos más.
+
+El que, aun después de mil besos,
+sigue pensando:
+
+<strong>“uno más.”</strong>
+</p>
+</section>
+
+
+<section class="stanza">
+<p>
+Porque contigo nunca parece suficiente.
+
+<br><br>
+
+Siempre quiero otro instante,
+otra mirada,
+otro abrazo,
+otro beso,
+otra noche,
+otra historia.
+
+<br><br>
+
+Otra oportunidad
+para decirte cuánto te amo.
+</p>
+</section>
+
+
+<section class="mantra">
+<div class="mantra-text">
+    Mientras mi corazón<br>
+    conserve tu nombre,<br>
+    <span>nunca estaré completamente a oscuras.</span>
+</div>
+</section>
+
+
+<section class="stanza">
+<p>
+Porque tú eres esa luz
+que no depende del cielo.
+
+<br><br>
+
+La que vive dentro de mí.
+
+<br><br>
+
+La que aparece cuando sonrío
+sin saber por qué.
+
+<br><br>
+
+La que hace que una simple noche de agosto
+se sienta como un pequeño universo
+hecho solamente para nosotros.
+
+<br><br>
+
+Así que esta noche,
+mi Luz de Azabache,
+quédate un instante en estas palabras.
+
+<br><br>
+
+Quédate en cada verso.
+
+<br><br>
+
+Quédate en la parte más bonita de mi pensamiento.
+</p>
+</section>
+
+
+<div class="heart-line">♡ · ♡ · ♡</div>
+
+
+<section class="stanza">
+<p>
+Y si alguna vez dudas de cuánto te amo,
+recuerda esto:
+
+<br><br>
+
+no hay distancia que consiga disminuirte,
+no hay noche capaz de apagarte,
+no hay silencio que pueda borrarte,
+y no existe rincón de mi corazón
+donde tu nombre no haya dejado huella.
+
+<br><br>
+
+Te amo por lo que eres.
+
+<br><br>
+
+Por lo que despiertas en mí.
+
+<br><br>
+
+Por cada pequeño detalle que te hace ser tú.
+
+<br><br>
+
+Y por todas esas cosas que quizá ni siquiera sabes
+que hacen que mi corazón
+se vuelva completamente tuyo.
+</p>
+</section>
+
+
+<section class="stanza">
+<p>
+Esta noche no quiero prometerte el universo.
+
+<br><br>
+
+Quiero algo más verdadero:
+
+<br><br>
+
+<strong>quiero seguir construyendo contigo
+un pequeño universo propio.</strong>
+
+Uno donde nuestros abrazos sean refugio,
+nuestros besos tengan su propio idioma,
+nuestras miradas digan aquello
+que las palabras no puedan explicar,
+y donde, incluso después de mucho tiempo,
+pueda seguir mirándote
+con la misma certeza de esta noche:
+
+<br><br>
+
+que entre todas las personas,
+todos los caminos,
+todas las historias
+y todos los destinos posibles,
+mi corazón tuvo la fortuna inmensa
+de encontrarte a ti.
+</p>
+</section>
+
+
+<section class="stanza">
+<p>
+Y entonces, cuando esta noche termine
+y el cielo empiece lentamente a cambiar,
+quiero que quede flotando una última verdad
+entre las estrellas:
+
+<strong>te amo.</strong>
+
+Pero no como se dicen las palabras bonitas.
+
+<br><br>
+
+Te amo como se guarda un hogar.
+
+<br><br>
+
+Como se protege un sueño.
+
+<br><br>
+
+Como se abraza aquello que no quieres perder.
+
+<br><br>
+
+Como se mira a alguien
+y, sin necesidad de decir absolutamente nada,
+se siente dentro del pecho:
+
+<strong>“aquí quiero quedarme.”</strong>
+</p>
+</section>
+
+
+<section class="mantra">
+<div class="mantra-text">
+    Y si mi corazón pudiera escribir<br>
+    su último verso,<br><br>
+    no escribiría una despedida.<br><br>
+    <span>Escribiría tu nombre.</span>
+</div>
+</section>
+
+
+<section class="stanza">
+<p>
+Una y otra vez.
+
+<br><br>
+
+Hasta que incluso la eternidad
+entendiera que mi forma favorita de amar
+siempre tuvo tu rostro.
+
+<br><br>
+
+<strong>Te amo, mi Luz de Azabache.</strong>
+
+<br><br>
+
+Esta noche.
+
+<br><br>
+
+Mañana.
+
+<br><br>
+
+Y en todas esas noches que todavía
+nos quedan por inventar juntos.
+</p>
+</section>
+
+</main>
+
+
+<footer class="final">
+
+    <div class="final-heart">❤️‍🔥</div>
+
+    <h2>
+        Si alguna vez el cielo pregunta<br>
+        dónde aprendí a amar así...
+        <br><br>
+        pronunciaré tu nombre.
+    </h2>
+
+    <p>
+        Porque entre todas las estrellas que existen,
+        mi corazón eligió una sola para quedarse mirando.
+    </p>
+
+    <div class="signature">
+        ✦ CON TODO MI AMOR · ESTA NOCHE Y SIEMPRE ✦
+    </div>
+
+</footer>
+
+
+<script>
+
+/* ───────────── ESTRELLAS ───────────── */
+
+const sky = document.getElementById("sky");
+
+for(let i = 0; i < 180; i++){
+
+    const star = document.createElement("span");
+
+    star.className = "star";
+
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+
+    const size = Math.random() * 2 + .5;
+
+    star.style.width = size + "px";
+    star.style.height = size + "px";
+
+    star.style.animationDelay =
+        Math.random() * 5 + "s";
+
+    star.style.animationDuration =
+        (3 + Math.random() * 5) + "s";
+
+    sky.appendChild(star);
+}
+
+
+/* ───────────── REVELACIÓN DEL POEMA ───────────── */
+
+const stanzas =
+document.querySelectorAll(".stanza");
+
+const observer =
+new IntersectionObserver(
+(entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("visible");
+        }
+    });
+},
+{
+    threshold:.12
+});
+
+stanzas.forEach(stanza=>{
+    observer.observe(stanza);
+});
+
+
+/* ───────────── ESTRELLAS FUGACES ───────────── */
+
+function shootingStar(){
+
+    const meteor =
+    document.createElement("div");
+
+    meteor.style.position="fixed";
+    meteor.style.width="2px";
+    meteor.style.height="90px";
+    meteor.style.background=
+        "linear-gradient(transparent,#fff,transparent)";
+    meteor.style.opacity=".7";
+    meteor.style.transform="rotate(45deg)";
+    meteor.style.left=
+        Math.random()*80+"%";
+    meteor.style.top=
+        Math.random()*35+"%";
+    meteor.style.zIndex="2";
+    meteor.style.pointerEvents="none";
+
+    document.body.appendChild(meteor);
+
+    meteor.animate(
+        [
+            {
+                transform:"translate(0,0) rotate(45deg)",
+                opacity:0
+            },
+            {
+                transform:"translate(180px,180px) rotate(45deg)",
+                opacity:.8
+            },
+            {
+                transform:"translate(330px,330px) rotate(45deg)",
+                opacity:0
+            }
+        ],
+        {
+            duration:1300,
+            easing:"ease-out"
+        }
+    );
+
+    setTimeout(()=>{
+        meteor.remove();
+    },1300);
+}
+
+setInterval(shootingStar,7000);
+
+</script>
+
+</body>
+                                 </html>
